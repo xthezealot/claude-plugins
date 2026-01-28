@@ -1,0 +1,31 @@
+{
+  "name": "thezealot-plugins",
+  "owner": {
+    "name": "xthezealot"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by xthezealot",
+    "version": "1.0.0",
+    "pluginRoot": "../plugins"
+  },
+  "plugins": [
+    {
+      "name": "bun-migrate",
+      "source": "./bun-migrate",
+      "description": "Migrate JavaScript projects from npm/pnpm/yarn to Bun as package manager",
+      "version": "1.0.0",
+      "author": {
+        "name": "xthezealot"
+      }
+    },
+    {
+      "name": "youtube-transcript",
+      "source": "./youtube-transcript",
+      "description": "Fetch YouTube video transcripts for analysis and summarization",
+      "version": "1.0.0",
+      "author": {
+        "name": "xthezealot"
+      }
+    }
+  ]
+}

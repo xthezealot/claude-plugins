@@ -1,0 +1,8 @@
+{
+  "name": "youtube-transcript",
+  "version": "1.0.0",
+  "description": "Fetch YouTube video transcripts for analysis and summarization",
+  "author": {
+    "name": "xthezealot"
+  }
+}
