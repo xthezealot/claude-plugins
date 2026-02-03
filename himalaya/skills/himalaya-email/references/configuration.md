@@ -419,6 +419,65 @@ message.send.backend.auth.type = "password"
 message.send.backend.auth.command = "pass icloud/app-password"
 ```
 
+## Email Aliases
+
+Himalaya has no built-in alias feature. To send from an alias persistently, configure a separate account that shares the same backend credentials but uses a different `email` field:
+
+```toml
+# Primary account
+[accounts.personal]
+default = true
+email = "alice@example.com"
+display-name = "Alice Smith"
+
+backend.type = "imap"
+backend.host = "imap.example.com"
+backend.port = 993
+backend.encryption = "tls"
+backend.auth.type = "password"
+backend.auth.command = "security find-generic-password -s himalaya-imap -a alice@example.com -w"
+
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtp.example.com"
+message.send.backend.port = 465
+message.send.backend.encryption = "tls"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.command = "security find-generic-password -s himalaya-smtp -a alice@example.com -w"
+
+# Alias account — same server/credentials, different From address
+[accounts.alias]
+email = "team@example.com"
+display-name = "Alice Smith (Team)"
+
+backend.type = "imap"
+backend.host = "imap.example.com"
+backend.port = 993
+backend.encryption = "tls"
+backend.auth.type = "password"
+backend.auth.command = "security find-generic-password -s himalaya-imap -a alice@example.com -w"
+
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtp.example.com"
+message.send.backend.port = 465
+message.send.backend.encryption = "tls"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.command = "security find-generic-password -s himalaya-smtp -a alice@example.com -w"
+```
+
+Send from the alias with `-a`:
+
+```bash
+himalaya template send -a alias <<'EOF'
+From: team@example.com
+To: recipient@example.com
+Subject: Hello from the team
+
+Body here.
+EOF
+```
+
+For one-off alias usage without a separate account, override the `From:` header directly in the template. The SMTP server must allow sending from that address.
+
 ## Diagnostics
 
 Check account health:

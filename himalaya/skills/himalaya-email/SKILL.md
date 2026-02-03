@@ -146,6 +146,30 @@ A successful `template send` produces no output on stdout. Check stderr for erro
 
 For details on MML syntax (attachments, HTML parts, encryption), read **`references/mml-syntax.md`**.
 
+### Sending from an Alias
+
+Himalaya has no built-in alias feature. To send from an alias address, override the `From:` header. This works if the SMTP server allows sending from that address (most providers do for configured aliases).
+
+When generating a template:
+
+```bash
+himalaya template write -H "From:alias@example.com" -H "To:recipient@example.com" -H "Subject:Hello"
+```
+
+Or set it directly in a heredoc:
+
+```bash
+himalaya template send <<'EOF'
+From: alias@example.com
+To: recipient@example.com
+Subject: Hello
+
+Body here.
+EOF
+```
+
+For a persistent alias setup using separate accounts, see **`references/configuration.md`**.
+
 ### Working with Drafts
 
 Save a draft:
