@@ -25,6 +25,15 @@
       "author": {
         "name": "The Zealot"
       }
+    },
+    {
+      "name": "himalaya",
+      "source": "./himalaya",
+      "description": "Email management skill using the himalaya CLI",
+      "version": "1.0.0",
+      "author": {
+        "name": "The Zealot"
+      }
     }
   ]
 }
