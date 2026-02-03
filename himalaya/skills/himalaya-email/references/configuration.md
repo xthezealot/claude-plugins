@@ -170,15 +170,10 @@ host = "imap.example.com"
 port = 993
 encryption = "tls"           # "tls", "start-tls", or "none"
 
-# Password auth
+# Password auth (command outputs password to stdout)
 [accounts.default.backend.auth]
 type = "password"
-command = "pass email/imap"  # command that outputs password
-
-# OR keyring-based
-[accounts.default.backend.auth]
-type = "password"
-keyring = "himalaya-imap"    # stored in system keyring
+command = "pass email/imap"
 
 # OR OAuth2
 [accounts.default.backend.auth]
@@ -226,6 +221,38 @@ command = "pass email/smtp"
 [accounts.default.message.send.backend]
 type = "sendmail"
 command = "/usr/sbin/sendmail"
+```
+
+## Password Storage on macOS
+
+The Homebrew build of himalaya does not include `+keyring`, so the TOML `keyring = "..."` auth option is unavailable. Use the macOS Keychain via the `security` command instead.
+
+### Storing a password
+
+```bash
+# Add (first time)
+security add-generic-password -s himalaya-imap -a user@example.com -w
+
+# Update (if entry already exists)
+security add-generic-password -U -s himalaya-imap -a user@example.com -w
+```
+
+Both forms prompt for the password interactively. Use a distinct `-s` service name per backend (e.g., `himalaya-imap`, `himalaya-smtp`).
+
+### Using it in himalaya config
+
+Point `auth.command` at `security find-generic-password -w`:
+
+```toml
+# IMAP
+[accounts.default.backend.auth]
+type = "password"
+command = "security find-generic-password -s himalaya-imap -a user@example.com -w"
+
+# SMTP
+[accounts.default.message.send.backend.auth]
+type = "password"
+command = "security find-generic-password -s himalaya-smtp -a user@example.com -w"
 ```
 
 ## PGP / Encryption
