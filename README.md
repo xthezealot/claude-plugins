@@ -14,6 +14,7 @@ Then install the plugins you want:
 
 ```
 /plugin install bun-migrate@thezealot-plugins
+/plugin install himalaya@thezealot-plugins
 /plugin install youtube-transcript@thezealot-plugins
 ```
 
@@ -30,6 +31,14 @@ Migrate JavaScript projects from npm/pnpm/yarn to Bun as the package manager.
 ```
 
 This migrates the **package manager only**, not the runtime. Your scripts will still use `node` - only package management commands are changed to use `bun`.
+
+### himalaya
+
+Email management using the [himalaya](https://github.com/pimalaya/himalaya) CLI — search, read, compose, reply, forward, manage drafts, attachments, folders, and flags. Multi-account support with MML syntax for rich content.
+
+Includes a safety hook that prompts for confirmation before sending emails or deleting messages/folders.
+
+**Requires:** himalaya CLI installed and configured (`~/.config/himalaya/config.toml`).
 
 ### youtube-transcript
 
