@@ -146,6 +146,53 @@ A successful `template send` produces no output on stdout. Check stderr for erro
 
 For details on MML syntax (attachments, HTML parts, encryption), read **`references/mml-syntax.md`**.
 
+### Multipart HTML with Signature
+
+To send a professional email with both plain text and HTML (e.g., with an HTML signature), use `<#multipart type=alternative>`. The plain text comes first (before any `<#part>` tag), then the HTML part:
+
+```bash
+himalaya template send <<'EOF'
+From: you@example.com
+To: recipient@example.com
+Subject: Meeting follow-up
+
+<#multipart type=alternative>
+Hi Bob,
+
+Thanks for the meeting today. I'll send the notes by Friday.
+
+Best,
+Alice
+
+--
+Alice Smith
+alice@example.com | example.com
+<#part type=text/html>
+<html><body style="font-family: -apple-system, Arial, sans-serif; font-size: 14px; color: #333;">
+<p>Hi Bob,</p>
+<p>Thanks for the meeting today. I'll send the notes by Friday.</p>
+<p>Best,<br/>Alice</p>
+<br/>
+<!-- HTML signature goes here, inside the HTML part -->
+<table cellpadding="0" cellspacing="0" style="font-size: 13px;">
+  <tr>
+    <td style="border-left: 2px solid #2563eb; padding-left: 12px;">
+      <strong>Alice Smith</strong><br/>
+      <a href="mailto:alice@example.com">alice@example.com</a> | example.com
+    </td>
+  </tr>
+</table>
+</body></html>
+<#/part>
+<#/multipart>
+EOF
+```
+
+Key points:
+- Plain text fallback uses `--` separator before the signature (name, email, URL)
+- HTML signature lives **inside** the `<#part type=text/html>` block, after the body, separated by `<br/>`
+- Do **not** wrap with `<#multipart type=related>` for inline images — see Known Limitations
+
 ### Sending from an Alias
 
 Himalaya has no built-in alias feature. To send from an alias address, override the `From:` header. This works if the SMTP server allows sending from that address (most providers do for configured aliases).
@@ -278,6 +325,10 @@ himalaya account doctor # diagnose default account
 himalaya account doctor work # diagnose specific account
 ```
 
+**Important**: Always run `himalaya account list` first to discover available account names. Don't guess — account names are defined in `~/.config/himalaya/config.toml` and may not match the email address.
+
+If there is only **one** account configured (common with providers like Zoho that support multiple aliases), skip `-a` entirely and just set the `From:` header in the template to the desired sender address. The SMTP server will send from that address if it's a configured alias.
+
 ## Envelope Query Language Reference
 
 ### Filter Operators
@@ -323,6 +374,12 @@ himalaya account doctor <ACCOUNT> --fix # attempt automatic repair
 ```
 
 If himalaya is not installed, see the [himalaya repo](https://github.com/pimalaya/himalaya) for installation. For account configuration, see **`references/configuration.md`**.
+
+## Known Limitations (himalaya 1.1.0)
+
+- **Inline image attachments fail**: Using `<#multipart type=related>` with `<#part disposition=inline filename=... id=...>` to embed images via `cid:` references causes "cannot parse MML body" errors. Workaround: use `<img src="https://...">` with a hosted image URL in the HTML instead of `cid:` references. Alternatively, omit the image entirely — the surrounding HTML will still render correctly.
+- **`id` attribute not supported**: The `id` attribute on `<#part>` (used to set Content-ID for `cid:` references) is not parsed by himalaya's MML parser. Do not use `cid:` image references; use remote URLs instead.
+- **No `himalaya draft` command**: Draft management uses the template system: `himalaya template save -f "Drafts"` to save, `himalaya message read` / `himalaya message delete` to read/clean up drafts.
 
 ## Additional Resources
 

@@ -113,6 +113,8 @@ Here is the screenshot:
 <#part disposition=inline filename=/path/to/screenshot.png><#/part>
 ```
 
+> **Limitation (himalaya 1.1.0):** The `id` attribute on `<#part>` is not supported by himalaya's MML parser — using it causes "cannot parse MML body" errors. This means `cid:` image references (`<img src="cid:...">`) cannot work. For images in HTML emails (e.g., signature logos), use a remote URL instead: `<img src="https://example.com/logo.png">`. Simple inline disposition (above) works for attaching images as standalone parts.
+
 ## PGP Encryption
 
 Encrypt the message body using PGP/MIME:
@@ -185,6 +187,8 @@ Alice
 
 ## Complete Example: HTML Email with Inline Image
 
+> **Note:** This pattern may fail with "cannot parse MML body" in himalaya 1.1.0. See the Inline Images section above for details. If it fails, remove the `<#part disposition=inline>` and the `<img src="cid:...">` reference.
+
 ```
 From: alice@example.com
 To: bob@example.com
@@ -216,6 +220,7 @@ Subject: Design preview
 | `filename` | File path | Attach a file from disk |
 | `name` | String | Override displayed filename |
 | `disposition` | `inline`, `attachment` | How the part is presented (default: attachment) |
+| `id` | String | Content-ID for `cid:` references in HTML (unreliable in 1.1.0) |
 | `description` | String | Description metadata for the part |
 | `encrypt` | `pgpmime` | Encrypt the part content |
 | `sign` | `pgpmime` | Sign the part content |
