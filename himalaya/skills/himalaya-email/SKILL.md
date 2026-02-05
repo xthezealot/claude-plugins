@@ -110,6 +110,48 @@ himalaya template reply <ID> --all # reply all
 himalaya template forward <ID>
 ```
 
+> **Important: Replying to emails**
+>
+> When replying, you MUST use `himalaya template reply <ID>` to generate the template first. This command:
+> - Adds `In-Reply-To` and `References` headers (required for email threading)
+> - Includes the quoted original message
+> - Pre-fills `To:`, `Cc:`, and `Subject:` correctly
+>
+> **Never compose a reply from scratch** — it will appear as a new conversation in the recipient's mail client.
+
+**Complete reply workflow:**
+
+```bash
+# 1. Generate the reply template (outputs to stdout)
+himalaya template reply 95 --account work
+
+# 2. Capture output, shows something like:
+# From: you@example.com
+# To: sender@example.com
+# In-Reply-To: <original-message-id@example.com>
+# References: <original-message-id@example.com>
+# Subject: Re: Original subject
+#
+# > Quoted original message here
+# > Line 2 of original...
+
+# 3. Compose your reply (keep headers, add body above the quoted text), then send:
+himalaya template send --account work <<'EOF'
+From: you@example.com
+To: sender@example.com
+In-Reply-To: <original-message-id@example.com>
+References: <original-message-id@example.com>
+Subject: Re: Original subject
+
+Your reply text here.
+
+> Quoted original message here
+> Line 2 of original...
+EOF
+```
+
+For HTML replies with signatures, wrap the body in MML multipart syntax (see "Multipart HTML with Signature" below) while preserving all headers from the generated template.
+
 **Step 2**: Modify the template output as needed. A template looks like:
 
 ```
