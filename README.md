@@ -13,21 +13,21 @@ Add this marketplace to Claude Code:
 Then install the plugins you want:
 
 ```
-/plugin install bun-migrate@thezealot-plugins
+/plugin install bun@thezealot-plugins
 /plugin install himalaya@thezealot-plugins
-/plugin install youtube-transcript@thezealot-plugins
+/plugin install youtube@thezealot-plugins
 ```
 
 ## Available Plugins
 
-### bun-migrate
+### bun
 
 Migrate JavaScript projects from npm/pnpm/yarn to Bun as the package manager.
 
 **Usage:**
 ```
-/bun-migrate:pm
-/bun-migrate:pm --dry-run
+/bun:migrate-pm
+/bun:migrate-pm --dry-run
 ```
 
 This migrates the **package manager only**, not the runtime. Your scripts will still use `node` - only package management commands are changed to use `bun`.
@@ -40,18 +40,18 @@ Includes a safety hook that prompts for confirmation before sending emails or de
 
 **Requires:** himalaya CLI installed and configured (`~/.config/himalaya/config.toml`).
 
-### youtube-transcript
+### youtube
 
 Fetch YouTube video transcripts and analyze them with Claude - summarize content, answer questions, or extract specific information.
 
 **Usage:**
 ```
-/youtube VIDEO_ID summarize this video
-/youtube https://www.youtube.com/watch?v=VIDEO_ID what are the main points?
-/youtube https://youtu.be/VIDEO_ID list all products mentioned
+/youtube:transcript VIDEO_ID summarize this video
+/youtube:transcript https://www.youtube.com/watch?v=VIDEO_ID what are the main points?
+/youtube:transcript https://youtu.be/VIDEO_ID list all products mentioned
 ```
 
-Dependencies are installed automatically when Claude Code starts a session with this plugin enabled.
+Dependencies are installed automatically when the transcript skill is first invoked.
 
 ## License
 

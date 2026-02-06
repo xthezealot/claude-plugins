@@ -1,23 +1,23 @@
-# bun-migrate
+# bun
 
 Claude Code plugin to migrate JavaScript projects from npm/pnpm/yarn to Bun as the package manager.
 
 ## Installation
 
-This plugin is installed at `~/.claude/plugins/bun-migrate`.
+This plugin is installed at `~/.claude/plugins/bun`.
 
 To use in Claude Code, ensure the plugin directory is recognized by Claude Code.
 
-## Commands
+## Skills
 
-### `/bun-migrate:pm`
+### `/bun:migrate-pm`
 
 Migrates your project's package manager to Bun.
 
 **Usage:**
 ```
-/bun-migrate:pm
-/bun-migrate:pm --dry-run
+/bun:migrate-pm
+/bun:migrate-pm --dry-run
 ```
 
 **What it does:**

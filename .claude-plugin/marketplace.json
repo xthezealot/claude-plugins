@@ -9,8 +9,8 @@
   },
   "plugins": [
     {
-      "name": "bun-migrate",
-      "source": "./bun-migrate",
+      "name": "bun",
+      "source": "./bun",
       "description": "Migrate JavaScript projects from npm/pnpm/yarn to Bun as package manager",
       "version": "1.0.0",
       "author": {
@@ -18,8 +18,8 @@
       }
     },
     {
-      "name": "youtube-transcript",
-      "source": "./youtube-transcript",
+      "name": "youtube",
+      "source": "./youtube",
       "description": "Fetch YouTube video transcripts for analysis and summarization",
       "version": "1.0.0",
       "author": {

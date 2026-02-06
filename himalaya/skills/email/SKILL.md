@@ -1,5 +1,5 @@
 ---
-name: Himalaya Email
+name: email
 description: >-
   Manage email through the himalaya CLI: list, search, read, compose, reply,
   forward, and send messages; work with drafts, attachments, flags, and folders;

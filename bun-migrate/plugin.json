@@ -1,5 +1,0 @@
-{
-  "name": "bun-migrate",
-  "version": "1.0.0",
-  "description": "Migrate JavaScript projects from npm/pnpm/yarn to Bun as package manager"
-}

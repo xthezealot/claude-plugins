@@ -1,12 +1,6 @@
 ---
-description: Migrate project's package manager from npm/pnpm/yarn to Bun
-argument-hint: "[--dry-run]"
-allowed-tools:
-  - Bash
-  - Read
-  - Edit
-  - Glob
-  - Grep
+name: migrate-pm
+description: This skill should be used when the user asks to "migrate to bun", "switch package manager to bun", "convert from npm to bun", "convert from pnpm to bun", "convert from yarn to bun", "replace npm with bun", or mentions migrating a JavaScript project's package manager to Bun.
 ---
 
 # Package Manager Migration to Bun

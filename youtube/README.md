@@ -1,20 +1,20 @@
-# YouTube Transcript Plugin
+# YouTube Plugin
 
 Fetch YouTube video transcripts and analyze them with Claude - summarize content, answer questions, or extract specific information.
 
 ## Setup
 
-**Automatic**: Dependencies are installed automatically when Claude Code starts a session with this plugin enabled.
+**Automatic**: Dependencies are installed automatically when the transcript skill is first invoked.
 
 **Manual** (if needed):
 ```bash
-cd /path/to/youtube-transcript
+cd /path/to/youtube
 uv venv && uv pip install -r requirements.txt
 ```
 
 ## Usage
 
-Use the `/youtube` command followed by a video ID or URL and your request:
+Use the `/youtube:transcript` skill followed by a video ID or URL and your request:
 
 ```
 /youtube VIDEO_ID summarize this video

@@ -9,7 +9,7 @@ MARKER="$PLUGIN_DIR/.setup-complete"
 # Skip if already set up
 [ -f "$MARKER" ] && exit 0
 
-echo "Setting up youtube-transcript plugin..." >&2
+echo "Setting up youtube plugin..." >&2
 
 # Create venv if it doesn't exist
 if [ ! -d "$VENV_DIR" ]; then
