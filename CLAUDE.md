@@ -66,3 +66,4 @@ When creating or editing any skill (including its `SKILL.md`, reference docs, an
 - **Skill descriptions**: Write as keyword-rich trigger phrases so Claude activates the skill for the right user intents
 - **Reference docs**: Place in `skills/{name}/references/` and load via `${CLAUDE_PLUGIN_ROOT}` paths in SKILL.md
 - **Safety-critical operations**: Guard with PreToolUse hooks that block and prompt for confirmation
+- **Version bumps**: When bumping a plugin version, always update **both** `{plugin}/plugin.json` and `.claude-plugin/marketplace.json` to keep them in sync

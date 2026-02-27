@@ -21,7 +21,7 @@
       "name": "youtube",
       "source": "./youtube",
       "description": "Fetch YouTube video transcripts for analysis and summarization",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "The Zealot"
       }
