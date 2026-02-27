@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **Claude Code Plugin Marketplace** containing plugins by xthezealot. The marketplace is registered via `/plugin marketplace add xthezealot/claude-plugins` and individual plugins are installed with `/plugin install {name}@thezealot-plugins`.
 
-Three plugins exist: **bun** (package manager migration), **himalaya** (email via CLI), and **youtube** (transcript fetching).
+Four plugins exist: **bun** (package manager migration), **himalaya** (email via CLI), **humanizer** (AI writing pattern removal), and **youtube** (transcript fetching).
 
 ## Architecture
 

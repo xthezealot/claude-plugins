@@ -34,6 +34,15 @@
       "author": {
         "name": "The Zealot"
       }
+    },
+    {
+      "name": "humanizer",
+      "source": "./humanizer",
+      "description": "Remove signs of AI-generated writing from text",
+      "version": "1.0.0",
+      "author": {
+        "name": "The Zealot"
+      }
     }
   ]
 }

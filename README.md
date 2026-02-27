@@ -15,6 +15,7 @@ Then install the plugins you want:
 ```
 /plugin install bun@thezealot-plugins
 /plugin install himalaya@thezealot-plugins
+/plugin install humanizer@thezealot-plugins
 /plugin install youtube@thezealot-plugins
 ```
 
@@ -39,6 +40,15 @@ Email management using the [himalaya](https://github.com/pimalaya/himalaya) CLI 
 Includes a safety hook that prompts for confirmation before sending emails or deleting messages/folders.
 
 **Requires:** himalaya CLI installed and configured (`~/.config/himalaya/config.toml`).
+
+### humanizer
+
+Remove signs of AI-generated writing from text. Detects and fixes 24 categories of AI patterns — significance inflation, promotional language, vague attributions, em dash overuse, sycophantic phrasing, and more. Based on Wikipedia's "Signs of AI writing" guide.
+
+**Usage:**
+```
+/humanizer
+```
 
 ### youtube
 
