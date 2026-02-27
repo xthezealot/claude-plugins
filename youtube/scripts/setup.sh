@@ -1,7 +1,7 @@
 #!/bin/bash
 # Auto-setup virtual environment and dependencies
 
-PLUGIN_DIR="${CLAUDE_PLUGIN_ROOT:-$(dirname "$0")/..}"
+PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VENV_DIR="$PLUGIN_DIR/.venv"
 REQUIREMENTS="$PLUGIN_DIR/requirements.txt"
 MARKER="$PLUGIN_DIR/.setup-complete"
