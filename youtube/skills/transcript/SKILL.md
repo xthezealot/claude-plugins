@@ -1,6 +1,6 @@
 ---
 name: transcript
-description: This skill should be used when the user asks to "fetch a YouTube transcript", "summarize a YouTube video", "get transcript from YouTube", "analyze a video", "what does this video say", or provides a YouTube URL or video ID for content extraction. Provides workflow for fetching, analyzing, and saving YouTube video transcripts.
+description: Use when user asks to "fetch a YouTube transcript", "summarize a YouTube video", "get transcript from YouTube", "analyze a video", "what does this video say", or provides a YouTube URL or video ID for content extraction. Provides workflow for fetching, analyzing, and saving YouTube video transcripts.
 ---
 
 # YouTube Transcript

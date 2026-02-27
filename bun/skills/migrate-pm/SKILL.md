@@ -1,6 +1,6 @@
 ---
 name: migrate-pm
-description: This skill should be used when the user asks to "migrate to bun", "switch package manager to bun", "convert from npm to bun", "convert from pnpm to bun", "convert from yarn to bun", "replace npm with bun", or mentions migrating a JavaScript project's package manager to Bun.
+description: Use when user asks to "migrate to bun", "switch package manager to bun", "convert from npm to bun", "convert from pnpm to bun", "convert from yarn to bun", "replace npm with bun", or mentions migrating a JavaScript project's package manager to Bun.
 ---
 
 # Package Manager Migration to Bun
